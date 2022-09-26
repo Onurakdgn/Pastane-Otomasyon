@@ -45,16 +45,6 @@ namespace WindowsFormsApp7
             dataGridView1.Columns[0].HeaderCell.Value = "KATEGORİ";
             dataGridView1.Columns[1].HeaderCell.Value = "ÜRÜN ADI";
         }
-        void urun_yukle()
-        {
-            string sql = "select * from urunler where kategorino='" + comboBox1.SelectedValue + "'";
-            SqlDataAdapter da = new SqlDataAdapter(sql, bag);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            listBox1.DataSource = dt;
-            listBox1.DisplayMember = "urun";
-            listBox1.ValueMember = "urunno";
-        }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -68,14 +58,7 @@ namespace WindowsFormsApp7
             listBox1.DisplayMember = "urun";
         }
 
-        void fiyat_yukle()
-        {
-            string sql = "select * from urunler where urunno = '" + listBox1.SelectedValue + "'";
-            SqlDataAdapter da = new SqlDataAdapter(sql, bag);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            textBox2.Text = dt.Rows[0][4].ToString();
-        }
+
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             string urunno = listBox1.SelectedValue.ToString();
